@@ -33,13 +33,6 @@ class InputData(BaseModel):
 #   "petal_width": 1.8
 # }
 
-# def validate_inputs(
-#         data: InputData, 
-#         input_format: dict[str, type] = input_format
-#         ):
-
-
-
 #Load dataset
 iris_data = load_iris()
 X = iris_data.data
@@ -57,8 +50,12 @@ def index():
 
 @app.post('/predict/')
 def prediction(data: InputData):
-    # validate_inputs(data,input_format)
-
+    """
+    Function that takes values from user and predicts number of petals.
+    Note that pydantic model already performs type checks
+    Input: input data from user
+    Output: Predicted number of petals
+    """
     #Prepare values for model prediction
     vals = [
             data.sepal_length, \
